@@ -6,8 +6,14 @@ use Carbon\Carbon;
 use CSWeb\Galaxpay\Contracts\BillingInterface;
 use stdClass;
 
-class AbstractTransactions implements BillingInterface
+abstract class AbstractTransactions implements BillingInterface
 {
+    public const TYPE_BOLETO = 'boleto';
+    public const TYPE_CARTAO = 'cartao';
+
+    public const TYPE_BILL_SALE         = 'sale';
+    public const TYPE_BILL_SUBSCRIPTION = 'contract';
+
     protected string $customerIntegrationId;
 
     protected string $integrationId;
@@ -20,7 +26,10 @@ class AbstractTransactions implements BillingInterface
 
     protected string $typeBill;
 
-    protected int $quantity = 1;
+    /**
+     * @var int|string
+     */
+    protected $quantity = 1;
 
     protected int $installments = 1;
 
@@ -103,11 +112,11 @@ class AbstractTransactions implements BillingInterface
 
     public function getPaymentType(): string
     {
-        if ($this->paymentType === 'boleto') {
+        if ($this->paymentType === self::TYPE_BOLETO) {
             return $this->paymentType;
         }
 
-        return ($this->paymentType == 'cartao') ? 'newCard' : 'existingCard';
+        return ($this->paymentType == self::TYPE_CARTAO) ? 'newCard' : 'existingCard';
     }
 
     public function setPaymentType($paymentType): AbstractTransactions
@@ -134,12 +143,12 @@ class AbstractTransactions implements BillingInterface
         return $this->typeBill;
     }
 
-    public function getQuantity(): int
+    public function getQuantity()
     {
         return $this->quantity;
     }
 
-    public function setQuantity(int $quantity): AbstractTransactions
+    public function setQuantity($quantity): AbstractTransactions
     {
         $this->quantity = $quantity;
 
