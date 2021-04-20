@@ -21,4 +21,15 @@ class AbstractModel extends Fluent
 
         return $this->castAttribute($key, $value);
     }
+
+    public function toArray(): array
+    {
+        $data = [];
+
+        foreach ($this->attributes as $attribute => $value) {
+            $data[$attribute] = $this->get($attribute, $value);
+        }
+
+        return $data;
+    }
 }
