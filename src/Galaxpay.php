@@ -6,13 +6,13 @@ use GuzzleHttp\{Client as Http, Psr7\Request};
 use Psr\Log\LoggerInterface;
 
 /**
- * Class Webservice
+ * Galaxpay
  *
  * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
  * @version 1.0.0
  * @package CSWeb\Galaxpay
  */
-class Webservice
+class Galaxpay
 {
     public const WEBSERVICE_ADDRESS = 'https://app.galaxpay.com.br';
 
