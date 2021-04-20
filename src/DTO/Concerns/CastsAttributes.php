@@ -64,8 +64,7 @@ trait CastsAttributes
 
     protected function isCustomDateTimeCast($cast): bool
     {
-        return strncmp($cast, 'date:', 5) === 0 ||
-            strncmp($cast, 'datetime:', 9) === 0;
+        return strncmp($cast, 'date:', 5) === 0 || strncmp($cast, 'datetime:', 9) === 0;
     }
 
     public function getCast($key):? string

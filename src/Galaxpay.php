@@ -53,7 +53,7 @@ class Galaxpay
 
     protected function execute(string $endpoint, array $data, string $verb = 'GET'): array
     {
-        $http = new Http();
+        $http    = new Http();
         $request = new Request(
             $verb,
             $this->resolveEndpointUrl($endpoint),

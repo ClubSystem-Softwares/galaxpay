@@ -33,5 +33,16 @@
         "psr-4": {
             "Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "format": [
+            "./vendor/bin/php-cs-fixer fix"
+        ],
+        "ci": [
+            "./vendor/bin/php-cs-fixer fix --dry-run --using-cache=no --verbose --stop-on-violation",
+            "./vendor/bin/phpmd src text ./phpmd.xml",
+            "./vendor/bin/phpcs --standard=phpcs.xml",
+            "./vendor/bin/phpunit"
+        ]
     }
 }

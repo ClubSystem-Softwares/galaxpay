@@ -3,7 +3,6 @@
 namespace Tests\DTO;
 
 use CSWeb\Galaxpay\DTO\Bill;
-use Illuminate\Support\Fluent;
 use PHPUnit\Framework\TestCase;
 
 class BillTest extends TestCase
