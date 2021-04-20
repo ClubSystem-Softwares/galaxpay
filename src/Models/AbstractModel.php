@@ -13,7 +13,7 @@ use Illuminate\Support\Fluent;
  */
 class AbstractModel extends Fluent
 {
-    use Concerns\HasAttributes;
+    use Concerns\CastsAttributes;
 
     public function get($key, $default = null)
     {

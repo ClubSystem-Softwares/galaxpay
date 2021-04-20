@@ -4,13 +4,9 @@ namespace CSWeb\Galaxpay\Models\Concerns;
 
 use Carbon\CarbonInterface;
 use DateTimeInterface;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection as BaseCollection;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Str;
+use Illuminate\Support\{Carbon, Collection as BaseCollection, Facades\Date};
 
-trait HasAttributes
+trait CastsAttributes
 {
     protected array $casts = [];
 
