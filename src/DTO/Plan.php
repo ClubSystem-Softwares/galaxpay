@@ -1,18 +1,18 @@
 <?php
 
-namespace CSWeb\Galaxpay\Models;
+namespace CSWeb\Galaxpay\DTO;
 
 /**
- * Class Customer
+ * Class Plan
  *
  * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
  * @version 1.0.0
  * @package CSWeb\Galaxpay\Models
  */
-class Customer extends AbstractModel
+class Plan extends AbstractDTO
 {
     protected array $casts = [
-        'internalId'    => 'int',
-        'integrationId' => 'int',
+        'internalId'   => 'string',
+        'initialPrice' => 'float',
     ];
 }

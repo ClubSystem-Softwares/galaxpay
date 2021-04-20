@@ -1,6 +1,6 @@
 <?php
 
-namespace CSWeb\Galaxpay\Models;
+namespace CSWeb\Galaxpay\DTO;
 
 /**
  * Class Bill
@@ -9,7 +9,7 @@ namespace CSWeb\Galaxpay\Models;
  * @version 1.0.0
  * @package CSWeb\Galaxpay\Models
  */
-class Bill extends AbstractModel
+class Bill extends AbstractDTO
 {
     protected array $casts = [
         'internalId'            => 'int',

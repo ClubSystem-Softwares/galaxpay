@@ -1,6 +1,6 @@
 <?php
 
-namespace CSWeb\Galaxpay\Models\Concerns;
+namespace CSWeb\Galaxpay\DTO\Concerns;
 
 use Carbon\CarbonInterface;
 use DateTimeInterface;
@@ -45,23 +45,36 @@ trait CastsAttributes
         }
     }
 
-    protected function getCastType($key): string
+    protected function getCastType($key): ?string
     {
-        if ($this->isCustomDateTimeCast($this->getCasts()[$key])) {
+        if (!$cast = $this->getCast($key)) {
+            return null;
+        }
+
+        if ($this->isCustomDateTimeCast($cast)) {
             return 'custom_datetime';
         }
 
-        if ($this->isDecimalCast($this->getCasts()[$key])) {
+        if ($this->isDecimalCast($cast)) {
             return 'decimal';
         }
 
-        return trim(strtolower($this->getCasts()[$key]));
+        return trim(strtolower($cast));
     }
 
     protected function isCustomDateTimeCast($cast): bool
     {
         return strncmp($cast, 'date:', 5) === 0 ||
             strncmp($cast, 'datetime:', 9) === 0;
+    }
+
+    public function getCast($key):? string
+    {
+        if (array_key_exists($key, $this->casts)) {
+            return $this->casts[$key];
+        }
+
+        return null;
     }
 
     public function getCasts(): array
